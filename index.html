@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background-color: #ecf0ec;
+    font-family: sans-serif;
+    outline: none;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator{
+    background-color: #ecf0ec;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: inset 5px 5px 12px #ffffff,
+                      5px 5px 12px rgba(0,0,0.16);
+    display: grid;
+    grid-template-columns:repeat(4,68px)
+}
+input{
+    grid-column:span 4 ;
+    height:70px;
+    width: 260px;
+    background-color: #ecf0f3;
+    box-shadow: inset -5px -5px 12px #ffffff,
+                inset 5px 5px 12px rgba(0,0,0.16);
+    border:none;
+    border-radius: 30px;
+    color: rgb(70,70,70);
+    font-size: 50px;
+    text-align: end;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+button{
+    height: 48px;
+    width: 48px;
+    background-color: #ecf0f3;
+    box-shadow: -5px -5px 12px #ffffff,
+                 5px 5px 12px rgba(0,0,0.16);
+    border: none;
+    border-radius: 50%;
+    margin: 8px;
+    font-size: 16px;
+}
+.equal{
+    width:115px;
+    border-radius: 40px;
+    box-shadow: -5px -5px 12px #ffffff,
+                 5px 5px 12px rgba(0,0,0.16);
+}
+    </style>
+</head>
+<body>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+    <h1 id="title">Calculator</h1> 
+    <p id="description">This is a simple calculator application built using HTML, CSS, and JavaScript.</p>
+    
+     <div class="container">
+        <div class="calculator">
+            <input type="text" id="result">
+            <button onclick="clearScreen()" class="btn btn-light" id="clear">C</button>
+            <button onclick="del()" class="btn btn-light" id="backspace">Del</button>
+            <button onclick="display('.')" class="btn btn-light" id="decimal">.</button>
+            <button onclick="display('/')" class="btn btn-light" id="divide">/</button>
+
+            <button onclick="display('7')" class="btn btn-light" id="7">7</button>
+            <button onclick="display('8')" class="btn btn-light" id="8">8</button>
+            <button onclick="display('9')" class="btn btn-light" id="9">9</button>
+            <button onclick="display('')" class="btn btn-light" id="multiply"></button>
+
+            <button onclick="display('4')" class="btn btn-light" id="4">4</button>
+            <button onclick="display('5')" class="btn btn-light" id="5">5</button>
+            <button onclick="display('6')" class="btn btn-light" id="6">6</button>
+            <button onclick="display('-')" class="btn btn-light" id="subtract">-</button>
+
+            <button onclick="display('1')" class="btn btn-light" id="1">1</button>
+            <button onclick="display('2')" class="btn btn-light" id="2">2</button>
+            <button onclick="display('3')" class="btn btn-light" id="3">3</button>
+            <button onclick="display('+')" class="btn btn-light" id="add">+</button>
+
+            <button onclick="display('0')" class="btn btn-light" id="0">0</button>
+            <button onclick="display('00')" class="btn btn-light" id="00">00</button>
+            <button onclick="calculate()" class="btn btn-success equal" id="equal">=</button>
+        </div>
+    </div>
+
+<script>
+    let resultinput = document.getElementById("result");
+
+    function display(num) {
+        resultinput.value += num;
+    }
+
+    function calculate() {
+        try {
+            const result = eval(resultinput.value);
+            resultinput.value = result;
+     
+        } catch (err) {
+            alert("Invalid Expression");
+        }
+    }
+
+    function clearScreen() {
+        resultinput.value = "";
+         
+    }
+
+    function del() {
+        resultinput.value = resultinput.value.slice(0, -1);
+    }
+
+</script>
+
+</body>
+</html>
